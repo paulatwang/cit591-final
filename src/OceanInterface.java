@@ -60,7 +60,7 @@ public interface OceanInterface {
 	 * Provides access to the grid of ships in this Ocean. The methods in the Ship
 	 * class that take an Ocean parameter must be able to read and even modify the
 	 * contents of this array. While it is generally undesirable to allow methods in
-	 * one class to directly access instancce variables in another class, in this
+	 * one class to directly access instance variables in another class, in this
 	 * case there is no clear and elegant alternatives.
 	 * 
 	 * @return the 10x10 array of ships.
