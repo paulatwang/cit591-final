@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4046405c-a99d-4678-b1c4-8c269b0fb78e" name="Changes" comment="Completed methods for ocean and ships">
+    <list default="true" id="4046405c-a99d-4678-b1c4-8c269b0fb78e" name="Changes" comment="Complete main gameplay">
+      <change afterPath="$PROJECT_DIR$/src/BattleshipTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Battleship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battleship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cruiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cruiser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Destroyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Destroyer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmptySea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmptySea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/final.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleshipGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleshipRunner.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ocean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ocean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Submarine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Submarine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +51,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BattleshipGame.executor": "Run",
     "Application.BattleshipRunner.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
     "Java Scratch.Scratch.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true"
@@ -106,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733888319668</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Complete main gameplay">
+      <option name="closed" value="true" />
+      <created>1733890970512</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733890970512</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,7 +136,8 @@
     <MESSAGE value="Added Ship and subclasses of Ship" />
     <MESSAGE value="Added BattleshipGame and BattleshipRunner" />
     <MESSAGE value="Completed methods for ocean and ships" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed methods for ocean and ships" />
+    <MESSAGE value="Complete main gameplay" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete main gameplay" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

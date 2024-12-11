@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -125,7 +124,7 @@ public class Ocean implements OceanInterface {
 			if (!ship.shootAt(row, column)){ // if ship sunk after hit
 				this.shipsSunk++;
 			}
-			return true;
+			return true; // ship hit
 		}
 		return false; // no ship or already sunk
 	}
@@ -239,8 +238,8 @@ public class Ocean implements OceanInterface {
 		}
 		// Print statistics
 		System.out.printf("    Ships sunk ----------------------- %d/10 \n\n",getShipsSunk());
-		System.out.printf("Shots fired: %d\n", getShotsFired());
-		System.out.printf("Hit count: %d\n", getHitCount());
+//		System.out.printf("Shots fired: %d\n", getShotsFired());
+//		System.out.printf("Hit count: %d\n", getHitCount());
 	}
 
 }

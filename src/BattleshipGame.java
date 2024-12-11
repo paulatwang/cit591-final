@@ -1,30 +1,56 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * This class is the main class of the Battleship game. This is where we set
+ *  up the game, accept shots from the user as coordinates, display the results,
+ *  print final scores, and ask the user if they want to play again.
+ *
+ * @author paula wang
+ *
+ */
 public class BattleshipGame {
-    private Ocean ocean;
-    private Scanner input;
+    /**
+     * An instance of the Ocean class
+     */
+    private static Ocean ocean;
 
-    public BattleshipGame() {
-        // initialize fields
-        this.ocean = new Ocean();
-        this.input = new Scanner(System.in);
+    /**
+     * used for obtaining user input
+     */
+    private static Scanner input;
 
-        // generate random placement of ships in ocean
-        ocean.placeAllShipsRandomly();
-    }
+    public static void main(String[] args) {
+        while (true) {
+            // reset objects
+            ocean = new Ocean();
+            input = new Scanner(System.in);
 
-    public void play() {
-        printGreeting();
-        while (!ocean.isGameOver()) {
-            int[] coordinates = getCoordinates(); // prompt user for next coordinates
-            addShot(coordinates[0], coordinates[1]); // add shot to ocean
+            // generate random placement of ships in ocean
+            ocean.placeAllShipsRandomly();
+
+            // start game
+            printGreeting();
+            while (!ocean.isGameOver()) {
+                int[] coordinates = getCoordinates(); // prompt user for next coordinates
+                addShot(coordinates[0], coordinates[1]); // add shot to ocean
+            }
+            // end game
+            printEnding();
+
+            // ask about replay
+            if (!replay()) {
+                break;
+            }
+
         }
-        printEnding();
+
     }
 
-
-    private void printGreeting() {
+    /**
+     * print welcoming and instructions message to player
+     */
+    private static void printGreeting() {
         System.out.println("""
                 ▗▄▄▖  ▗▄▖▗▄▄▄▖▗▄▄▄▖▗▖   ▗▄▄▄▖ ▗▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▄▖
                 ▐▌ ▐▌▐▌ ▐▌ █    █  ▐▌   ▐▌   ▐▌   ▐▌ ▐▌  █  ▐▌ ▐▌
@@ -44,8 +70,13 @@ public class BattleshipGame {
         ocean.print(); // print ocean
     }
 
-    private int[] getCoordinates() {
-        try {
+    /**
+     * Prompts player for coordinates to hit
+     *
+     * @return coordinates in an int array
+     */
+    private static int[] getCoordinates() {
+        while (true) {
             System.out.println("Pick the coordinates for your next target.");
             System.out.print("Enter row: ");
             String row = input.next();
@@ -54,21 +85,35 @@ public class BattleshipGame {
 
             if (isValidInput(row, col)) {
                 return new int[]{Integer.parseInt(row), Integer.parseInt(col)};
-            } else throw new InputMismatchException();
-
-        } catch (InputMismatchException e) {
-            System.out.println("Invalid input. Enter a valid set of coordinates.");
-            return getCoordinates();
+            } else {
+                System.out.println("Invalid input. Enter a valid set of coordinates.");
+            }
         }
     }
 
-
-    private boolean isValidInput(String row, String col) {
+    /**
+     * Checks whether the coordinates provided by user input are valid or not.
+     *
+     * @param row the row of the coordinate
+     * @param col the column of the coordinate
+     * @return {@literal true} if valid, {@literal false} if not
+     */
+    private static boolean isValidInput (String row, String col){
         return row.matches("^[0-9]$") && col.matches("^[0-9]$");
     }
 
-
-    private void addShot(int row, int column) {
+    /**
+     * Adds the chosen coordinates as a shot in the ocean.
+     * <ul>
+     *     <li>if hits ship, print "You landed a hit!"</li>
+     *     <li>if sunk ship, print "Wow! You sunk a <code>shiptype</code>! \n"</li>
+     *     <li>if hit nothing, print "Aww, nothing but open water..."</li>
+     * </ul>
+     *
+     * @param row the row of the shot
+     * @param column the column of the shot
+     */
+    private static void addShot ( int row, int column){
         Ship shipAtLocation = ocean.getShipArray()[row][column];
 
         if (ocean.shootAt(row, column)) { // ship present and not sunk
@@ -85,7 +130,10 @@ public class BattleshipGame {
         }
     }
 
-    private void printEnding() {
+    /**
+     * Prints out the ending message, including total shots fired and hit count
+     */
+    private static void printEnding () {
         System.out.println();
         System.out.println("Mission complete! The enemy fleet is no more.");
         System.out.println("     _______________________");
@@ -94,5 +142,25 @@ public class BattleshipGame {
         System.out.printf("    | Hit count -------- %3d | \n", ocean.getHitCount());
         System.out.println("     _______________________");
     }
+
+    /**
+     * Prompts the user to see if they want to replay the game
+     *
+     * @return {@literal true} if yes, {@literal false} if no
+     */
+    private static boolean replay() {
+        while (true) {
+            System.out.println("Would you like to play again? <y> or <n>");
+            String ans = input.next().trim().toLowerCase();
+            if (ans.equals("y")) {
+                return true;
+            } else if (ans.equals("n")) {
+                return false;
+            } else {
+                System.out.println("Invalid response. Please respond with <y> or <n>.");
+            }
+        }
+    }
 }
+
 
