@@ -5,7 +5,8 @@ public class Cruiser extends Ship {
      * <code>hit</code> array, based on the size of this ship (3 tiles).
      */
     public Cruiser(){
-
+        this.length = 3;
+        this.hit = new boolean[]{false, false, false};
     }
 
     /**

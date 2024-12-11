@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Ship is the abstract class for all of the ships and sea tiles
  * that will make up the game of Battleship. Ships of all kinds are
@@ -5,7 +7,6 @@
  * portion of the ship that is not the bow will be at a higher numbered
  * row or column than the bow.
  */
-
 
 
 public abstract class Ship {
@@ -37,38 +38,43 @@ public abstract class Ship {
     protected int length;
 
     /**
-     * Creates an instance of a ship.
+     * An array of coordinates that the ship occupies in the ocean
      */
-    public Ship(){
+    protected ArrayList<int[]> shipCoordinates;
 
+    /**
+     * @return the length of the ship
+     */
+    public ArrayList<int[]> getShipCoordinates(){
+        return this.shipCoordinates;
     }
 
     /**
      * @return the length of the ship
      */
     public int getLength(){
-        return length;
+        return this.length;
     }
 
     /**
      * @return the row of the bow (front) of the ship
      */
     public int getBowRow(){
-        return bowRow;
+        return this.bowRow;
     }
 
     /**
      * @return the column of the bow (front) of the ship
      */
     public int getBowColumn(){
-        return bowColumn;
+        return this.bowColumn;
     }
 
     /**
      * @param bowColumn the bowColumn to set
      */
     public void setBowColumn(int bowColumn){
-        return;
+        this.bowColumn = bowColumn;
     }
 
     /**
@@ -76,21 +82,21 @@ public abstract class Ship {
      *         {@literal false} otherwise.
      */
     public boolean isHorizontal(){
-        return false;
+        return horizontal;
     }
 
     /**
      * @param horizontal the horizontal to set
      */
     public void setHorizontal(boolean horizontal){
-        return;
+        this.horizontal = horizontal;
     }
 
     /**
      * @param bowRow the bowRow to set
      */
     public void setBowRow(int bowRow){
-        return;
+        this.bowRow = bowRow;
     }
 
     /**
@@ -99,12 +105,12 @@ public abstract class Ship {
     public abstract String getShipType();
 
     /**
-     * Determines whether or not this is represents a valid placement
-     * configuration for this Ship in this Ocean. Ship objects in an Ocean
-     * must not overlap other Ship objects or touch them vertically, horizontally,
-     * or diagonally. Additionally, the placement cannot be such that the Ship
-     * would extend beyond the extents of the 2D array in which it is placed.
-     * <b>Calling this method should not actually change either the Ship or the provided Ocean.</b>
+     * Determines whether this is a valid placement configuration for this Ship
+     * in this Ocean. Ship objects in an Ocean must not overlap other Ship
+     * objects or touch them vertically, horizontally, or diagonally. Additionally,
+     * the placement cannot be such that the Ship would extend beyond the extents
+     * of the 2D array in which it is placed. <b>Calling this method should not
+     * actually change either the Ship or the provided Ocean.</b>
      *
      * @param row the candidate row to place the ship
      * @param column  the candidate column to place the ship
@@ -118,7 +124,27 @@ public abstract class Ship {
                                    int column,
                                    boolean horizontal,
                                    Ocean ocean){
-        return false;
+        // check if ship fits within ocean grid
+        if ((horizontal && (column + this.length - 1 > 9)) ||
+                (!horizontal && (row + this.length - 1 > 9)) ||
+                ocean.isOccupied(row, column)) {
+            return false;
+        }
+        // define surrounding area
+        int rowStart = Math.max(0, row - 1);
+        int rowEnd = Math.min(9, row + (horizontal ? 1 : this.length));
+        int colStart = Math.max(0, column - 1);
+        int colEnd = Math.min(9, column + (horizontal ? this.length : 1));
+
+        // check if any cell in area is occupied
+        for (int r = rowStart; r <= rowEnd; r++){
+            for (int c = colStart; c <= colEnd; c++){
+                if (ocean.isOccupied(r, c)){
+                    return false;
+                }
+            }
+        }
+        return true; // location is valid
     }
 
 
@@ -139,7 +165,20 @@ public abstract class Ship {
                             int column,
                             boolean horizontal,
                             Ocean ocean){
-        return;
+        this.bowRow = row;
+        this.bowColumn = column;
+        this.horizontal = horizontal;
+        if (horizontal){
+            for (int c = column; c < column + this.length; c++){
+                ocean.getShipArray()[row][c] = this; // place ship in ocean
+                this.shipCoordinates.add(new int[]{row, c}); // add coordinates to shipCoordinates
+            }
+        } else {
+            for (int r = row; r < row + this.length; r++){
+                ocean.getShipArray()[r][column] = this; // place ship in ocean
+                this.shipCoordinates.add(new int[]{r, column}); // add coordinates to shipCoordinates
+            }
+        }
     }
 
     /**
@@ -154,7 +193,13 @@ public abstract class Ship {
      */
     public boolean shootAt(int row,
                            int column){
-        return false;
+        int hitLocation = horizontal ? column - this.bowColumn : row - this.bowRow;
+        this.hit[hitLocation] = true; // shoot at location
+
+        if (shipCoordinates.contains(new int[]{row, column}) && !isSunk()){ // if ship at coordinates & not sunk
+            return true;  // not sunk after hit
+        }
+        return false; // sunk after hit
     }
 
     /**
@@ -164,7 +209,12 @@ public abstract class Ship {
      *          {@literal false} otherwise.
      */
     public boolean isSunk(){
-        return false;
+        for (boolean hitStatus : this.hit){
+            if (!hitStatus){ // if location has not been hit yet
+                return false;
+            }
+        }
+        return true; // all parts are hit
     }
 
     /**

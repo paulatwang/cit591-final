@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
+
 /**
  * This class manages the game state by keeping track of what entity is
  * contained in each position on the game board.
@@ -32,12 +36,27 @@ public class Ocean implements OceanInterface {
 	protected int shipsSunk;
 
 	/**
+	 * HashSet of coordinates that the user has shot at
+	 */
+	protected HashSet<int[]> coordinatesHit;
+
+	/**
 	 * Creates an "empty" ocean, filling every space in the <code>ships</code> array
 	 * with EmptySea objects. Should also initialize the other instance variables
 	 * appropriately.
 	 */
 	public Ocean() {
-
+		// initialize empty ocean
+		this.ships =  new Ship[10][10];
+		for (int row = 0; row < 10; row++){
+			for (int col = 0; col < 10; col++){
+				this.ships[row][col] = new EmptySea();
+			}
+		}
+		// initialize other instance variables
+		this.shotsFired = 0;
+		this.hitCount = 0;
+		this.shipsSunk = 0;
 	}
 
 	/**
@@ -48,7 +67,27 @@ public class Ocean implements OceanInterface {
 	 * @see java.util.Random
 	 */
 	public void placeAllShipsRandomly() {
+		Random random = new Random();
 
+		// create array of all ships
+		Ship[] allships = new Ship[]{
+				new Battleship(),
+				new Cruiser(), new Cruiser(),
+				new Destroyer(), new Destroyer(), new Destroyer(),
+				new Submarine(), new Submarine(), new Submarine(), new Submarine()
+		};
+
+		// loop through ships and place them in ocean
+		for (Ship ship: allships){
+			int row, col;
+			boolean horizontal;
+			do {
+				row = random.nextInt(10);
+				col = random.nextInt(10);
+				horizontal = random.nextBoolean();
+			} while (!ship.okToPlaceShipAt(row, col, horizontal, this)); // check validity
+			ship.placeShipAt(row, col, horizontal, this); // if pass, then place ship
+		}
 	}
 
 	/**
@@ -61,7 +100,7 @@ public class Ocean implements OceanInterface {
 	 *         {@literal false} otherwise.
 	 */
 	public boolean isOccupied(int row, int column) {
-		return false;
+		return !(this.ships[row][column].getShipType()).equals("empty");
 	}
 
 	/**
@@ -77,7 +116,17 @@ public class Ocean implements OceanInterface {
 	 *         EmptySea), {@literal false} if it does not.
 	 */
 	public boolean shootAt(int row, int column) {
-		return false;
+		this.shotsFired++;
+		coordinatesHit.add(new int[]{row, column});
+		Ship ship = this.ships[row][column];
+		if (isOccupied(row, column) && !ship.isSunk()){ // ship present and not sunk
+			this.hitCount++;
+			if (!ship.shootAt(row, column)){ // if ship sunk after hit
+				this.shipsSunk++;
+			}
+			return true;
+		}
+		return false; // no ship or already sunk
 	}
 
 	/**
@@ -91,7 +140,7 @@ public class Ocean implements OceanInterface {
 	 * @return the number of hits recorded in this game.
 	 */
 	public int getHitCount() {
-		return this.shotsFired;
+		return this.hitCount;
 	}
 
 	/**
@@ -106,6 +155,9 @@ public class Ocean implements OceanInterface {
 	 *         {@literal false}.
 	 */
 	public boolean isGameOver() {
+		if (getShipsSunk() == 10){
+			return true;
+		}
 		return false;
 	}
 
@@ -113,13 +165,13 @@ public class Ocean implements OceanInterface {
 	 * Provides access to the grid of ships in this Ocean. The methods in the Ship
 	 * class that take an Ocean parameter must be able to read and even modify the
 	 * contents of this array. While it is generally undesirable to allow methods in
-	 * one class to directly access instancce variables in another class, in this
+	 * one class to directly access instance variables in another class, in this
 	 * case there is no clear and elegant alternatives.
 	 * 
 	 * @return the 10x10 array of ships.
 	 */
 	public Ship[][] getShipArray() {
-		return null;
+		return this.ships;
 	}
 
 	/**
@@ -143,7 +195,30 @@ public class Ocean implements OceanInterface {
 	 * 
 	 */
 	public void print() {
+		int rows = this.ships.length;
+		int cols = this.ships[0].length;
 
+		// Print top row (column indices)
+		System.out.print("    "); // initial spacing for alignment with left edge
+		for (int col = 0; col < cols; col++) {
+			System.out.printf("%4d", col);
+		}
+		System.out.println();
+
+		// Print rows with left edge (row indices)
+		for (int row = 0; row < rows; row++) {
+			System.out.printf("%4d", row); // Left edge (row index)
+			for (int col = 0; col < cols; col++) {
+				Ship ship = this.ships[row][col];
+
+				System.out.printf("%4s", ship.toString());
+			}
+			System.out.println();
+		}
+		// Print statistics
+		System.out.printf("    Ships sunk ----------------------- %d/10 \n\n",getShipsSunk());
+		System.out.printf("Shots fired: %d\n", getShotsFired());
+		System.out.printf("Hit count: %d\n", getHitCount());
 	}
 
 }

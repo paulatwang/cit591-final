@@ -5,7 +5,8 @@ public class Submarine extends Ship {
      * <code>hit</code> array, based on the size of this ship (1 tiles).
      */
     public Submarine(){
-
+        this.length = 1;
+        this.hit = new boolean[]{false};
     }
 
     /**

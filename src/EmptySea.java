@@ -5,7 +5,8 @@ public class EmptySea extends Ship {
      * <code>hit</code> array, based on the size of this Empty Sea (1 tiles).
      */
     public EmptySea(){
-
+        this.length = 1;
+        this.hit = new boolean[]{false};
     }
 
     /**
