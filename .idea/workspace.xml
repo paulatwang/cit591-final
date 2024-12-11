@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4046405c-a99d-4678-b1c4-8c269b0fb78e" name="Changes" comment="Complete main gameplay">
-      <change afterPath="$PROJECT_DIR$/src/BattleshipTest.java" afterDir="false" />
+    <list default="true" id="4046405c-a99d-4678-b1c4-8c269b0fb78e" name="Changes" comment="Add BattleshipTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/final.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleshipGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleshipRunner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ocean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ocean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleshipTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleshipTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ship.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +51,25 @@
     "Application.BattleshipGame.executor": "Run",
     "Application.BattleshipRunner.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.BattleshipTest.executor": "Run",
+    "JUnit.BattleshipTest.testDifferentShipLengths.executor": "Run",
+    "JUnit.BattleshipTest.testGameOver.executor": "Run",
+    "JUnit.BattleshipTest.testGetShipTypeForAllShips.executor": "Run",
+    "JUnit.BattleshipTest.testIsOccupied.executor": "Run",
+    "JUnit.BattleshipTest.testOceanGetterReturnsConstructorValue.executor": "Run",
+    "JUnit.BattleshipTest.testOceanShootAt.executor": "Run",
+    "JUnit.BattleshipTest.testOkToPlaceShipAtDestroyers.executor": "Run",
+    "JUnit.BattleshipTest.testOkToPlaceShipAtFitsWithinGrid.executor": "Run",
+    "JUnit.BattleshipTest.testOkToPlaceShipAtForBattleships.executor": "Run",
+    "JUnit.BattleshipTest.testOkToPlaceShipAtForCruisers.executor": "Run",
+    "JUnit.BattleshipTest.testOkToPlaceShipAtForDestroyers.executor": "Run",
+    "JUnit.BattleshipTest.testOkToPlaceShipAtSubmarinesOnly.executor": "Run",
+    "JUnit.BattleshipTest.testPlaceAllShipsRandomly.executor": "Run",
+    "JUnit.BattleshipTest.testPlaceShipAt.executor": "Run",
+    "JUnit.BattleshipTest.testShipGetterSetterMethods.executor": "Run",
+    "JUnit.BattleshipTest.testShipShootAt.executor": "Run",
+    "JUnit.BattleshipTest.testShipShootAtAndIsSunk.executor": "Run",
+    "JUnit.BattleshipTest.testShipShootAtAndIsSunkAndIsString.executor": "Run",
     "Java Scratch.Scratch.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -67,6 +83,67 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BattleshipTest.testGameOverAndPostGameGetterMethods">
+    <configuration name="BattleshipTest.testGameOver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="final" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BattleshipTest" />
+      <option name="METHOD_NAME" value="testGameOver" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BattleshipTest.testGameOverAndPostGameGetterMethods" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="final" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BattleshipTest" />
+      <option name="METHOD_NAME" value="testGameOverAndPostGameGetterMethods" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BattleshipTest.testIsOccupied" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="final" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BattleshipTest" />
+      <option name="METHOD_NAME" value="testIsOccupied" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BattleshipTest.testOceanShootAt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="final" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BattleshipTest" />
+      <option name="METHOD_NAME" value="testOceanShootAt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BattleshipTest.testPlaceAllShipsRandomly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="final" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BattleshipTest" />
+      <option name="METHOD_NAME" value="testPlaceAllShipsRandomly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BattleshipTest.testGameOverAndPostGameGetterMethods" />
+        <item itemvalue="JUnit.BattleshipTest.testGameOver" />
+        <item itemvalue="JUnit.BattleshipTest.testOceanShootAt" />
+        <item itemvalue="JUnit.BattleshipTest.testIsOccupied" />
+        <item itemvalue="JUnit.BattleshipTest.testPlaceAllShipsRandomly" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -117,7 +194,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733890970512</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Remove BattleshipRunner and import gameplay into BattleshipGame">
+      <option name="closed" value="true" />
+      <created>1733898358690</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733898358690</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add BattleshipTest">
+      <option name="closed" value="true" />
+      <created>1733898375583</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733898375583</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,7 +230,9 @@
     <MESSAGE value="Added BattleshipGame and BattleshipRunner" />
     <MESSAGE value="Completed methods for ocean and ships" />
     <MESSAGE value="Complete main gameplay" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete main gameplay" />
+    <MESSAGE value="Remove BattleshipRunner and import gameplay into BattleshipGame" />
+    <MESSAGE value="Add BattleshipTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add BattleshipTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

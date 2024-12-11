@@ -45,13 +45,6 @@ public abstract class Ship {
     /**
      * @return the length of the ship
      */
-    public ArrayList<int[]> getShipCoordinates(){
-        return this.shipCoordinates;
-    }
-
-    /**
-     * @return the length of the ship
-     */
     public int getLength(){
         return this.length;
     }
@@ -71,19 +64,20 @@ public abstract class Ship {
     }
 
     /**
-     * @param bowColumn the bowColumn to set
-     */
-    public void setBowColumn(int bowColumn){
-        this.bowColumn = bowColumn;
-    }
-
-    /**
      * @return {@literal true} if this boat is horizontal (facing left),
      *         {@literal false} otherwise.
      */
     public boolean isHorizontal(){
         return horizontal;
     }
+
+    /**
+     * @param bowColumn the bowColumn to set
+     */
+    public void setBowColumn(int bowColumn){
+        this.bowColumn = bowColumn;
+    }
+
 
     /**
      * @param horizontal the horizontal to set
@@ -103,6 +97,7 @@ public abstract class Ship {
      * @return the <code></>String</code> representing the type of this ship.
      */
     public abstract String getShipType();
+
 
     /**
      * Determines whether this is a valid placement configuration for this Ship
@@ -198,7 +193,7 @@ public abstract class Ship {
         this.hit[hitLocation] = true; // shoot at location
         // ensure part of the ship occupies the row and column
         boolean containsTarget = false;
-        for (int[] coords : shipCoordinates){
+        for (int[] coords : this.shipCoordinates){
             if (coords[0] == row && coords[1] == column){
                 containsTarget = true;
             }
