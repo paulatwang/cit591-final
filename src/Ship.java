@@ -168,6 +168,7 @@ public abstract class Ship {
         this.bowRow = row;
         this.bowColumn = column;
         this.horizontal = horizontal;
+        this.shipCoordinates = new ArrayList<>();
         if (horizontal){
             for (int c = column; c < column + this.length; c++){
                 ocean.getShipArray()[row][c] = this; // place ship in ocean
@@ -195,8 +196,14 @@ public abstract class Ship {
                            int column){
         int hitLocation = horizontal ? column - this.bowColumn : row - this.bowRow;
         this.hit[hitLocation] = true; // shoot at location
-
-        if (shipCoordinates.contains(new int[]{row, column}) && !isSunk()){ // if ship at coordinates & not sunk
+        // ensure part of the ship occupies the row and column
+        boolean containsTarget = false;
+        for (int[] coords : shipCoordinates){
+            if (coords[0] == row && coords[1] == column){
+                containsTarget = true;
+            }
+        }
+        if (containsTarget && !isSunk()){ // if ship at coordinates & not sunk
             return true;  // not sunk after hit
         }
         return false; // sunk after hit

@@ -57,6 +57,7 @@ public class Ocean implements OceanInterface {
 		this.shotsFired = 0;
 		this.hitCount = 0;
 		this.shipsSunk = 0;
+		this.coordinatesHit = new HashSet<>();
 	}
 
 	/**
@@ -151,6 +152,13 @@ public class Ocean implements OceanInterface {
 	}
 
 	/**
+	 * @return the HashSet of coordinates that user has hit
+	 */
+	public HashSet<int[]> getCoordinatesHit() {
+		return this.coordinatesHit;
+	}
+
+	/**
 	 * @return {@literal true} if all ships have been sunk, otherwise
 	 *         {@literal false}.
 	 */
@@ -209,9 +217,23 @@ public class Ocean implements OceanInterface {
 		for (int row = 0; row < rows; row++) {
 			System.out.printf("%4d", row); // Left edge (row index)
 			for (int col = 0; col < cols; col++) {
-				Ship ship = this.ships[row][col];
 
-				System.out.printf("%4s", ship.toString());
+				// check whether coordinates has been hit before
+				boolean coordHit = false;
+				for (int[] coords : coordinatesHit){
+					if (coords[0] == row && coords[1] == col){
+						coordHit = true;
+					}
+				}
+				// print value at coord
+				if (coordHit && isOccupied(row, col)){ // hit before and has ship
+					System.out.printf("%4s", this.ships[row][col].toString());
+				} else if (coordHit && !isOccupied(row, col)) { // hit before and no ship
+					System.out.printf("%4s", new EmptySea().toString());
+				} else {
+					System.out.printf("%4s", ".");
+				}
+
 			}
 			System.out.println();
 		}

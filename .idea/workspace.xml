@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4046405c-a99d-4678-b1c4-8c269b0fb78e" name="Changes" comment="Added Ship and subclasses of Ship">
-      <change afterPath="$PROJECT_DIR$/src/BattleshipGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleshipRunner.java" afterDir="false" />
+    <list default="true" id="4046405c-a99d-4678-b1c4-8c269b0fb78e" name="Changes" comment="Completed methods for ocean and ships">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Battleship.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Battleship.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Cruiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cruiser.java" afterDir="false" />
@@ -92,7 +90,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733789263027</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added BattleshipGame and BattleshipRunner">
+      <option name="closed" value="true" />
+      <created>1733888303744</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733888303744</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Completed methods for ocean and ships">
+      <option name="closed" value="true" />
+      <created>1733888319668</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733888319668</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +123,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added starter files." />
     <MESSAGE value="Added Ship and subclasses of Ship" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Ship and subclasses of Ship" />
+    <MESSAGE value="Added BattleshipGame and BattleshipRunner" />
+    <MESSAGE value="Completed methods for ocean and ships" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed methods for ocean and ships" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -117,6 +133,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ArithmeticException" package="java.lang" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
