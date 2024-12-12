@@ -292,7 +292,7 @@ public class BattleshipTest {
         assertEquals("S", outputStream.toString());
         outputStream.reset();
         // shoot at
-        assertFalse(submarine.shootAt(0,0));
+        assertTrue(submarine.shootAt(0,0));
         // after sinking
         assertTrue(submarine.isSunk());
         System.out.print(submarine.toString());
@@ -307,7 +307,7 @@ public class BattleshipTest {
         outputStream.reset();
         // shoot at
         assertTrue(destroyer.shootAt(0,0));
-        assertFalse(destroyer.shootAt(0,1));
+        assertTrue(destroyer.shootAt(0,1));
         // after sinking
         assertTrue(destroyer.isSunk());
         System.out.print(destroyer.toString());
@@ -323,7 +323,7 @@ public class BattleshipTest {
         // shoot at
         assertTrue(cruiser.shootAt(0,0));
         assertTrue(cruiser.shootAt(0,1));
-        assertFalse(cruiser.shootAt(0,2));
+        assertTrue(cruiser.shootAt(0,2));
         // after sinking
         assertTrue(cruiser.isSunk());
         System.out.print(cruiser.toString());
@@ -340,7 +340,7 @@ public class BattleshipTest {
         assertTrue(battleship.shootAt(0,0));
         assertTrue(battleship.shootAt(0,1));
         assertTrue(battleship.shootAt(0,2));
-        assertFalse(battleship.shootAt(0,3));
+        assertTrue(battleship.shootAt(0,3));
         // after sinking
         assertTrue(battleship.isSunk());
         System.out.print(battleship.toString());
@@ -448,6 +448,16 @@ public class BattleshipTest {
         assertTrue(ocean.shootAt(6, 3)); //  hit and sunk
         assertFalse(ocean.shootAt(6, 4)); // already sunk
 
+    }
+
+    @Test
+    public void testOceanShootAtAfterMultipleShots(){
+        destroyer.placeShipAt(0,0, true,ocean);
+        assertTrue(ocean.shootAt(0,0));
+        assertTrue(ocean.shootAt(0,0));
+        assertTrue(ocean.shootAt(0,1));
+        assertFalse(ocean.shootAt(0,0));
+        assertFalse(ocean.shootAt(0,1));
     }
 
     @Test

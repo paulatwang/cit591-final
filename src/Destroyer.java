@@ -9,6 +9,7 @@ public class Destroyer extends Ship {
     public Destroyer(){
         this.length = 2;
         this.hit = new boolean[]{false, false};
+        this.shipCoordinates = new ArrayList<>();
 
     }
 

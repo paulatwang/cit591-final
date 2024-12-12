@@ -119,9 +119,13 @@ public class Ocean implements OceanInterface {
 		this.shotsFired++;
 		coordinatesHit.add(new int[]{row, column});
 		Ship ship = this.ships[row][column];
-		if (isOccupied(row, column) && !ship.isSunk()){ // ship present and not sunk
+
+		if (isOccupied(row, column) && // ship present
+				!ship.isSunk() &&  // not sunk
+				ship.shootAt(row, column)){ // occupies this coordinate
+
 			this.hitCount++;
-			if (!ship.shootAt(row, column)){ // if ship sunk after hit
+			if (ship.isSunk()){ // if ship sunk after hit
 				this.shipsSunk++;
 			}
 			return true; // ship hit
